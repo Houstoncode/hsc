@@ -6,11 +6,10 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  extends: [
-    'plugin:vue/recommended',
-    'standard'
-  ],
+  extends: ['plugin:vue/recommended', 'standard'],
   rules: {
-    'vue/max-attributes-per-line': 'off'
+    'vue/max-attributes-per-line': 'off',
+    'space-before-function-paren': 'off',
+    'vue/html-self-closing': 'off'
   }
 }

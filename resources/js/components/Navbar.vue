@@ -5,7 +5,12 @@
         {{ appName }}
       </router-link>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbar"
+      >
         <span class="navbar-toggler-icon" />
       </button>
 
@@ -20,10 +25,15 @@
         <ul class="navbar-nav ms-auto">
           <!-- Authenticated -->
           <li v-if="user" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            <a
+              class="nav-link dropdown-toggle text-dark"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              <img :src="user.photo_url" class="rounded-circle profile-photo me-1">
+              <img :src="user.photo_url" class="rounded-circle profile-photo me-1" />
               {{ user.name }}
             </a>
             <div class="dropdown-menu">
@@ -76,7 +86,7 @@ export default {
   }),
 
   methods: {
-    async logout () {
+    async logout() {
       // Log out the user.
       await this.$store.dispatch('auth/logout')
 
@@ -91,7 +101,7 @@ export default {
 .profile-photo {
   width: 2rem;
   height: 2rem;
-  margin: -.375rem 0;
+  margin: -0.375rem 0;
 }
 
 .container {

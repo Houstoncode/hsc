@@ -5,7 +5,8 @@ require('laravel-mix-versionhash')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 mix
-  .js('resources/js/app.js', 'public/dist/js').vue({
+  .js('resources/js/app.js', 'public/dist/js')
+  .vue({
     extractStyles: true
   })
   .sass('resources/sass/app.scss', 'public/dist/css')
@@ -43,7 +44,7 @@ mix.then(() => {
   }
 })
 
-function publishAseets () {
+function publishAseets() {
   const publicDir = resolve(__dirname, './public')
 
   removeSync(join(publicDir, 'dist'))

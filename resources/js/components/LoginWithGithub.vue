@@ -14,16 +14,16 @@ export default {
     url: () => '/api/oauth/github'
   },
 
-  mounted () {
+  mounted() {
     window.addEventListener('message', this.onMessage, false)
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('message', this.onMessage)
   },
 
   methods: {
-    async login () {
+    async login() {
       const newWindow = openWindow('', this.$t('login'))
 
       const url = await this.$store.dispatch('auth/fetchOauthUrl', {
@@ -36,7 +36,7 @@ export default {
     /**
      * @param {MessageEvent} e
      */
-    onMessage (e) {
+    onMessage(e) {
       if (e.origin !== window.origin || !e.data.token) {
         return
       }
@@ -54,7 +54,7 @@ export default {
  * @param  {Object} options
  * @return {Window}
  */
-function openWindow (url, title, options = {}) {
+function openWindow(url, title, options = {}) {
   if (typeof url === 'object') {
     options = url
     url = ''
@@ -67,13 +67,15 @@ function openWindow (url, title, options = {}) {
   const width = window.innerWidth || document.documentElement.clientWidth || window.screen.width
   const height = window.innerHeight || document.documentElement.clientHeight || window.screen.height
 
-  options.left = ((width / 2) - (options.width / 2)) + dualScreenLeft
-  options.top = ((height / 2) - (options.height / 2)) + dualScreenTop
+  options.left = width / 2 - options.width / 2 + dualScreenLeft
+  options.top = height / 2 - options.height / 2 + dualScreenTop
 
-  const optionsStr = Object.keys(options).reduce((acc, key) => {
-    acc.push(`${key}=${options[key]}`)
-    return acc
-  }, []).join(',')
+  const optionsStr = Object.keys(options)
+    .reduce((acc, key) => {
+      acc.push(`${key}=${options[key]}`)
+      return acc
+    }, [])
+    .join(',')
 
   const newWindow = window.open(url, title, optionsStr)
 
